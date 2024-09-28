@@ -1,1 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate custom QR codes for free with a logo in the middle using our free QR code generator. Create QR codes for LinkedIn, Instagram, WiFi, Adobe, and more with logos in the center. Perfect for business branding and easy sharing.">
+  <meta name="keywords" content="free QR code generator with logo in middle, LinkedIn QR code generator with logo, Instagram QR code generator with logo, WiFi QR code generator with logo, Adobe QR code generator with logo">
+  <title>QR Code Generator</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif, sans-serif;
+      background-color: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%; /* Adjusts for mobile screens */
+      max-width: 400px; /* Ensures it doesn't get too wide on larger screens */
+      box-sizing: border-box;
+      font-size: 20px;
+      margin-top: 10px;
+      min-height: 90vh; /* Set a minimum height */
+    }
+
+    h1 {
+            font-size: 3vw; /* Scales with screen width */
+            color: white; /* White text color */
+            margin-bottom: 20px;
+            text-align: center; /* Center the text */
+            text-shadow: 
+                -2px -2px 0 #000, /* Top-left shadow */
+                2px -2px 0 #000,  /* Top-right shadow */
+                -2px 2px 0 #000,  /* Bottom-left shadow */
+                2px 2px 0 #000;   /* Bottom-right shadow */
+                position: relative; /* Required for ::after positioning */
+              }
+
+        h1::after {
+            content: ""; /* Empty content to create the line */
+            display: block;
+            width: 75%; /* Adjust width of the line */
+            height: 4px; /* Thickness of the line */
+            background-color: black; /* Line color */
+            margin: 20px auto 0; /* Margin to position it below the h1 */
+        }
+
+        .title-image {
+          display: block;
+          margin: 10px auto; /* Centers the image and adds margin */
+          width: 200px; /* Custom width for the image */
+          height: auto; /* Keeps the aspect ratio intact */
+        }
+
+        p {
+            text-align: justify; /* Justifies the text */
+            font-size: 17px;
+            background-color: #f5f1f1;
+        }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      font-size: 4vw; /* Responsive font size */
+    }
+
+    button {
+      background-color: #ffee00;
+      color: rgb(0, 0, 0);
+      border: none;
+      padding: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 70%;
+      margin: 0 auto;
+      font-size: 4vw; /* Responsive button size */
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #057b0b;
+      color: rgb(255, 255, 255);
+    }
+
+    .qr-container {
+      margin-top: 20px;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto;
+      width: 100%; /* Ensures the QR code scales on small screens */
+      max-width: 300px; /* Restricts maximum size on larger screens */
+      height: auto;
+    }
+
+    textarea {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 1vw; /* Responsive font size */
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 100px; /* Minimum height for better visibility */
+}
+
+    @media (orientation: landscape) {
+      body {
+        height: auto;
+        padding: 20px 0; /* Adds padding to prevent content from being cut off */
+      }
+
+      .container {
+        width: 80%; /* Increase width in landscape mode */
+        max-height: 90vh; /* Prevents the container from exceeding viewport height */
+        overflow-y: auto; /* Enables scrolling within the container if content is too long */
+      }
+
+      input, button {
+        font-size: 3vw; /* Adjust inputs and button sizes for landscape */
+      }
+    }
+
+    @media (min-width: 768px) {
+      
+
+      h1 {
+            font-size: 3vw; /* Scales with screen width */
+            color: white; /* White text color */
+            margin-bottom: 20px;
+            text-align: center; /* Center the text */
+            text-shadow: 
+                -2px -2px 0 #000, /* Top-left shadow */
+                2px -2px 0 #000,  /* Top-right shadow */
+                -2px 2px 0 #000,  /* Bottom-left shadow */
+                2px 2px 0 #000;   /* Bottom-right shadow */
+        }
+
+      input, button {
+        font-size: 16px; /* Fix size on larger screens */
+      }
+    }
+
+    @media (max-width: 950px) {
+      textarea {
+ 
+  font-size: 16px; /* Responsive font size */
+  
+}
+
+    }
+
+    @media (max-width: 500px) {
+      
+
+      h1 {
+            font-size: 11vw; /* Scales with screen width */
+            color: white; /* White text color */
+            margin-bottom: 20px;
+            text-align: center; /* Center the text */
+            text-shadow: 
+                -2px -2px 0 #000, /* Top-left shadow */
+                2px -2px 0 #000,  /* Top-right shadow */
+                -2px 2px 0 #000,  /* Bottom-left shadow */
+                2px 2px 0 #000;   /* Bottom-right shadow */
+            
+        }
+
+        .title-image {
+          display: block;
+          margin: 10px auto; /* Centers the image and adds margin */
+          width: 200px; /* Custom width for the image */
+          height: auto; /* Keeps the aspect ratio intact */
+          margin-top: 40px; /* Increase top margin on smaller screens */
+        
+        }
+
+        
+
+    body {
+      margin-top: 100px;
+    }
+
+    textarea {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 4vw; /* Responsive font size */
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 100px; /* Minimum height for better visibility */
+}
+      }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="Example of a free QR code generator with logo in middle.png" alt="An example of a free QR code generator with logo in middle" class="title-image">
+    <h1>Free QR Code Generator with Logo in Middle</h1>
+    
+    <div class="form-group">
+      <p>
+        To generate your custom QR code, follow these simple steps: First, insert your link. Then, if you'd like to personalize your QR code, you can upload an image or logo. Once you're ready, click on "Generate QR Code" and your QR code will be created instantly with your logo in the center.
+      </p>
+      <label for="linkInput"><b>Enter your link, phone number, or random text:</b></label>
+      <textarea id="linkInput" placeholder="Enter your text here..."></textarea>
+      
+      <label for="imageInput"><b>Upload your logo (optional):</b></label>
+      <input type="file" id="imageInput" accept="image/*">
+      
+      
+      <button id="generateBtn">Generate QR Code</button>
+    </div>
+    <div class="qr-container" id="qrContainer">
+      <canvas id="qrCodeCanvas"></canvas>
+    </div>
+    <button id="downloadBtn" style="display:none;">Download QR Code</button>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+  <script>
+    document.getElementById('generateBtn').addEventListener('click', function() {
+      const link = document.getElementById('linkInput').value;
+      const canvas = document.getElementById('qrCodeCanvas');
+      const downloadBtn = document.getElementById('downloadBtn');
+      const imageInput = document.getElementById('imageInput').files[0];
+
+      if (!link) {
+        alert('Please enter a valid URL.');
+        return;
+      }
+
+      // Set error correction level to H (30%)
+      const options = {
+        errorCorrectionLevel: 'H',  // High error correction level
+        width: 300                 // Increase size for better readability with a logo
+      };
+
+      // Generate QR code with specified options
+      QRCode.toCanvas(canvas, link, options, function (error) {
+        if (error) console.error(error);
+        console.log('QR code generated!');
+
+        // If an image is uploaded, add it to the center of the QR code
+        if (imageInput) {
+          const ctx = canvas.getContext('2d');
+          const reader = new FileReader();
+
+          reader.onload = function(event) {
+            const logo = new Image();
+            logo.src = event.target.result;
+
+            logo.onload = function() {
+              // Calculate the position and size of the logo in the center
+              const logoSize = canvas.width * 0.3; // Smaller logo (15% of QR code size)
+              const x = (canvas.width - logoSize) / 2;
+              const y = (canvas.height - logoSize) / 2;
+
+              // Ensure logo has transparency or white background for better contrast
+              ctx.fillStyle = 'white';
+              ctx.fillRect(x, y, logoSize, logoSize); // Create a white background for logo
+              
+              // Draw the logo on top of the QR code
+              ctx.drawImage(logo, x, y, logoSize, logoSize);
+              downloadBtn.style.display = 'block';
+            };
+          };
+
+          reader.readAsDataURL(imageInput);
+        } else {
+          downloadBtn.style.display = 'block';
+        }
+      });
+    });
+
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+      const canvas = document.getElementById('qrCodeCanvas');
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL();
+      link.download = 'qr-code.png';
+      link.click();
+    });
+  </script>
+</body>
+</html>
